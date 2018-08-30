@@ -1,0 +1,423 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 31, 2018, 10:35:32 PM
+    Author     : shibi
+*/
+.main_wrapper{
+   
+  
+    width: 100%;
+    height: 80px;
+    left: 35%;
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    border-style: solid;
+border-width: 5px;
+}
+
+header .main_wrapper a{
+ color: black;
+ cursor:pointer;
+ float: right;
+    
+}
+
+header .main_wrapper  a:hover{
+  display: block;   
+ background-color: activeborder; 
+ 
+    
+}
+.main_login{
+    background-color: #ffcccc;
+}
+
+.login-form{
+
+background-color:#ccffff;
+color: black;
+text-align: center;
+font-size:20px;
+padding-left: 50px;
+padding-right: 50px;
+padding-top:100px;
+padding-bottom: 50px;
+border-color:black;
+border-width: 50px;
+margin-left: 20px;
+margin-right: 20px;
+margin-top: 60px;
+margin-bottom: 20px;
+display: inline-block;
+
+
+    
+}
+
+.main_login form button hover{
+    display: block;
+    background-color: activeborder;
+    cursor: pointer;
+}
+.main_login form button{
+ color: black;
+ cursor:pointer;
+}
+
+header.index_home {
+    display: block;
+    background-color: activeborder;
+    cursor: pointer;
+}
+.home_page a{
+    text-align: center;
+}
+header.index_home button{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.index_home{
+ text-align: center;
+ border-color: black;
+ border-width: 5px;
+ border-style: solid;
+ padding-bottom: 10px;
+ padding-right: 10px;
+ padding-top: 10px;
+ background-color: #ccffff;;
+    
+}
+.home_page{
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    padding-top: 50px;
+    margin-top: 50px;
+    background-color: white;
+}
+.practice{
+  width: 100%;
+    height: 80px;
+    left: 35%;
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    border-style: solid;
+border-width: 5px; 
+
+    
+}
+p{
+    text-align: right
+}
+
+header .practice a{
+ color: black;
+ cursor:pointer;
+ float: right;
+    
+}
+
+header .practice  a:hover{
+  display: block;   
+ background-color: activeborder; 
+ 
+    
+}
+.practice1{
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    background-color:#009999;
+    box-sizing: border-box;
+    width: 260px;
+    height: 480px;
+    float: left;
+    border-style: solid;
+    border-width: 5px;
+    display: inline-table;
+    margin-top: 41px;
+    
+    
+}
+.practice1 a:hover{
+    background-color: antiquewhite;
+    color: black;
+}
+#practice2 button{
+    text-align: center;
+    cursor: pointer;
+    
+    
+}
+#practice2 button:hover{
+   
+    color: #ff0033;
+    font-size: 30px;
+ 
+}
+#practice2{
+    
+    text-align: center;
+    margin-top:  0px;
+    background-color: #ffcccc;
+    /*margin-bottom: 50px*/
+    margin-left: 320px;
+    margin-right: 50px;
+    
+    
+}
+#instructions{
+    
+    text-align:right;
+    color: #cc0033;
+    padding-bottom: 80px;
+}
+#com{
+    color: #ff0033;
+    text-align: right;
+    cursor: pointer;
+}
+
+#com1{ 
+    color: #ff0033;
+    text-align: right;
+cursor: pointer;}
+
+#com2{
+    color: #ff0033;
+    text-align: right;
+cursor: pointer;}
+#com3{ 
+   color: #ff0033; 
+    text-align: right;
+cursor: pointer;}
+#com4{
+   color: #ff0033; 
+    text-align: right;
+cursor: pointer;}
+#instrtext{
+  text-align: right; 
+}
+.practiceform{
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 110px;
+    height: 550px
+}
+
+#decomp{
+    
+    text-align: center;
+    margin-left:320px;
+    margin-right: 40px;
+    background-color: #ccffcc;
+    
+}
+#header{
+    
+    text-align: left;
+    color: #ff0099;
+}
+#header:hover{
+    color: #ff0000;
+}
+#header1{
+    text-align: left;
+    color: #ff0000;}
+/* change the color of text on hover*/
+#header1:hover{
+    color: #ff0099;
+}
+#instructions a:hover{
+    font-size: 30px;
+    color: #00ff33
+}
+/* change the font size on hover*/
+p a:hover{
+    
+    font-size: 30px;
+    color: #00ff33;
+}
+#periodic{
+text-align: right;
+display: inline-block;/*to enlarge image inside the page*/
+margin-left: 650px;
+margin-top: 20px;
+}
+
+#periodic:hover{
+    filter: alpha(opacity=30);/* opacity of image*/
+    transform: scale(1.3);
+    
+}
+.etypes{
+    text-align:left;
+    margin-left: 355px;
+}
+.elements{
+    text-align: left;
+    margin-left: 855px;
+}
+.elements:hover{
+    color:#ff0000;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* Labels for checked inputs */
+input:checked + label {
+  color: red;
+}
+/* change color of check box when checked*/
+
+input[type="checkbox"]:checked {
+  box-shadow: 0 0 0 5px hotpink;
+}
+.elements button:hover{
+    cursor: pointer;
+    background-color: #ffcccc;
+}
+#nonmetalre1{
+margin-left: 100px;
+color: #ff3300;
+}
+#nonmetalre2{
+margin-left: 100px;
+color: #3333ff;
+}
+#nonmetalre3{
+margin-left: 100px;
+color: #ff0099;
+}
+#nonmetalre4{
+margin-left: 100px;
+color: #00cc00;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 140px;
+}
+th, td {
+    padding: 5px;
+    text-align: left; 
+    margin-left: 200px;
+}
+#label{
+    font-weight: bold;
+    color: #00cc00;
+    
+}
+#head{
+    color: #ff0066;
+}
+
+.practice1 a{
+    color: #66ffff;
+    font-weight: bold;
+    
+        
+}
+p{text-align: right;}
+
+#instrtext{
+    font-style: oblique;
+    color: #ff3333;
+    font-weight: bold;
+}
+#practice2#mouseover{
+    display: none;
+}
+#practice2#butmou:hover#mouseover{
+    display: block;
+}
+
+#buttonimg{
+    border-color: green;
+    border-radius: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 0.5px;
+    padding-top: 0.5px;
+   display: inline-block;
+    background-color: white;
+   /* background-image: url('playbutton.gif');*/
+    
+}
+
+#buttonimg:hover{
+   /* background-image: url('Next.GIF');*/
+    border-color: #ff0000;
+}
+
+#butmou{
+  border-color: green;
+    border-radius: 8px;
+    padding-left: 0.1px;
+    padding-right: 0.1px;
+    padding-top: 0.01px;
+    padding-bottom:  0.01px;
+    font-size: 5px;
+    background-color: white;
+}
+#butmou:hover{
+ border-color: #ff0000;   
+}
+#hint{
+    font-size: 20px;
+    border-style: solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#hint:hover{
+    cursor: pointer;
+    color: #ff3333;
+    background-color: #ccffcc;
+}
+
+#correct{
+  /* border-style: solid;
+    padding-left: 10px;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /*text-align: center;*/
+    color: crimson;
+   border-color: #009999;
+   font-size: 20px;
+   font-family: fantasy;
+   font-weight: bold;
+    
+}
+#error2{
+    color: #ff0066;
+    font-size: 20px;
+/*border-style: solid;
+    padding-left: 10px;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;*/
+border-color: crimson;
+font-family: fantasy;
+font-weight: bold;
+}
+
+
+#input{
+    
+    color: #ff3333;
+}
+
+#input:hover{
+    background-color: #ccffcc;
+}
