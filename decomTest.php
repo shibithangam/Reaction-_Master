@@ -32,7 +32,7 @@ $timeSince = $now - $_SESSION['timer'];
 //Print out the result.
 echo "$timeSince seconds have passed.";
 
-include 'mysql.php';
+include 'db_con.php';
 
 
 //fetch total count from decomposition table

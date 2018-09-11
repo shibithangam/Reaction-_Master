@@ -62,7 +62,7 @@ value="other">Other
  
  <?php
 
-include 'mysql.php';
+include 'db_con.php';
 
 if (isset($_POST['submit'])) {
 	$res = SignUp();

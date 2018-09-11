@@ -85,7 +85,7 @@ function check()
 
 <body>
 <?php
-include("mysql.php");
+include("db_con.php");
 ?>
  <table width="100%" border="0">
    <tr>

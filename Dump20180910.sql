@@ -16,6 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Database: `reactionmaster`
+--
+CREATE DATABASE IF NOT EXISTS `reactions_master` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `reactions_master`;
+
+
+--
 -- Table structure for table `compounds`
 --
 
@@ -96,29 +103,6 @@ INSERT INTO `hints` VALUES (1,'Sodium oxide is combined with water gives Sodium 
 /*!40000 ALTER TABLE `hints` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `ions`
---
-
-DROP TABLE IF EXISTS `ions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ionsname` varchar(45) DEFAULT NULL,
-  `formula` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ions`
---
-
-LOCK TABLES `ions` WRITE;
-/*!40000 ALTER TABLE `ions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ions` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `reaction_type`
@@ -223,3 +207,331 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-09-10 11:12:59
+
+
+- --------------------------------------------------------
+
+--
+-- Table structure for table `acidbase`
+--
+
+DROP TABLE IF EXISTS `acidbase`;
+CREATE TABLE IF NOT EXISTS `acidbase` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `acidbase`
+--
+
+INSERT INTO `acidbase` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'HCl', 'NaOH', '', 'NaCl', 'H2O', ''),
+(2, 'H2SO4', 'NaOH', '', 'Na2SO4', 'H2O', ''),
+(3, 'Mg', 'HCl', '', 'MgCl2', 'H2', ''),
+(4, 'Zn', 'HCl', '', 'ZnCl2', 'H2', ''),
+(5, 'Mg', 'H2SO4', '', 'MgSO4', 'H2', '');
+
+
+--
+-- Table structure for table `combination`
+--
+
+DROP TABLE IF EXISTS `combination`;
+CREATE TABLE IF NOT EXISTS `combination` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `combination`
+--
+
+INSERT INTO `combination` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'N2', 'H2', '', 'NH3', '', ''),
+(2, 'Mg', 'O2', '', 'MgO', '', ''),
+(3, 'N2', 'O2', '', 'N2O', '', ''),
+(4, 'Na', 'Cl2', '', 'NaCl', '', ''),
+(5, 'H2', 'O2', '', 'H2O', '', '');
+
+
+--
+-- Table structure for table `complexion`
+--
+
+DROP TABLE IF EXISTS `complexion`;
+CREATE TABLE IF NOT EXISTS `complexion` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `complexion`
+--
+
+INSERT INTO `complexion` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'H2O2', 'Cl-', '', 'OCl-', 'H2O', ''),
+(2, 'HClO', 'I2', 'H2O', 'HCl', 'HIO3', ''),
+(3, 'BaCl2', 'H2SO4', '', 'BaSO4', 'HCl', ''),
+(4, 'CuSO4', '', '', 'Cu2+', 'SO4 2-', ''),
+(5, 'Cu', 'AgCl', '', 'CuCl', 'Ag', '');
+
+
+--
+-- Table structure for table `decomposition`
+--
+
+DROP TABLE IF EXISTS `decomposition`;
+CREATE TABLE IF NOT EXISTS `decomposition` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `decomposition`
+--
+
+INSERT INTO `decomposition` (`Rid`, `product1`, `product2`, `product3`, `reactant1`, `reactant2`, `reactant3`) VALUES
+(1, 'NH3', '', '', 'N2', 'H2', ''),
+(2, 'H2O', '', '', 'H2', 'O2', ''),
+(3, 'HgO', '', '', 'Hg', 'O2', ''),
+(4, 'MgCl2', '', '', 'Mg', 'Cl2', ''),
+(5, 'Al2O3', '', '', 'Al', 'O2', '');
+
+
+--
+-- Table structure for table `doublereplace`
+--
+
+DROP TABLE IF EXISTS `doublereplace`;
+CREATE TABLE IF NOT EXISTS `doublereplace` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doublereplace`
+--
+
+INSERT INTO `doublereplace` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'H+', 'OH-', '', 'H2O', '', '');
+
+-- --------------------------------------------------------
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ion`
+--
+
+DROP TABLE IF EXISTS `ion`;
+CREATE TABLE IF NOT EXISTS `ion` (
+  `ionname` varchar(20) NOT NULL,
+  `formula` varchar(20) DEFAULT NULL,
+  `Rid` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`ionname`),
+  KEY `Rid` (`Rid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`username`, `password`) VALUES
+('admin', 'admin');
+
+-- --------------------------------------------------------
+
+
+DROP TABLE IF EXISTS `newcustomer`;
+CREATE TABLE IF NOT EXISTS `newcustomer` (
+  `firstname` varchar(20) DEFAULT NULL,
+  `lastname` varchar(20) DEFAULT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `confirmpassword` varchar(20) DEFAULT NULL,
+  `dob` varchar(20) DEFAULT NULL,
+  `emailadd` varchar(20) DEFAULT NULL,
+  `phoneno` varchar(20) DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `newcustomer`
+--
+
+INSERT INTO `newcustomer` (`firstname`, `lastname`, `username`, `password`, `confirmpassword`, `dob`, `emailadd`, `phoneno`, `gender`) VALUES
+('kavya', 'N', 'reddy', 'dil', 'dil', '9/3/91', 'red@gmiail.com', '1234567890', 'female'),
+('dileep', 'N', 'dil', 'ka', 'ka', '3/30/89', 'dileep@gmail.com', '2345678901', 'male'),
+('charvith', 'G', 'cha', 'gv', 'gv', '10/18/13', 'char@gmail.com', '3456789012', 'male'),
+('moulya', 'G', 'moul', 'gajjala', 'gajjala', '7/28/87', 'moulya@gmail.com', '5678901234', 'female'),
+('dgjhg', 'wgfd', 'eds', 'ghj', 'ghj', '12/12/12', 'df@yahoo.co.in', '0987654321', 'female');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oxygen`
+--
+
+DROP TABLE IF EXISTS `oxygen`;
+CREATE TABLE IF NOT EXISTS `oxygen` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `oxygen`
+--
+
+INSERT INTO `oxygen` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'H2S', 'O2', '', 'HS', 'OH', ''),
+(2, 'HS', 'OH', 'O2', 'SO2', 'H2O', ''),
+(3, 'H2S', 'O3', '', 'SO2', 'H2O', ''),
+(4, 'N2O', 'O3', '', 'NO2', 'O2', ''),
+(5, 'O3', 'O', '', 'O2', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oxyred`
+--
+
+DROP TABLE IF EXISTS `oxyred`;
+CREATE TABLE IF NOT EXISTS `oxyred` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `oxyred`
+--
+
+INSERT INTO `oxyred` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'Na', 'Cl', '', 'Na+', 'Cl-', ''),
+(2, 'Fe2O3', 'CO', '', 'Fe', 'CO2', ''),
+(3, 'MnO2', 'HCl', '', 'MnCl2', 'Cl2', 'H2O'),
+(4, 'CH4', 'O2', '', 'CO2', 'H2O', ''),
+(5, 'Fe', 'O2', '', 'Fe2O3', '', '');
+
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `singlereplace`
+--
+
+DROP TABLE IF EXISTS `singlereplace`;
+CREATE TABLE IF NOT EXISTS `singlereplace` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `singlereplace`
+--
+
+INSERT INTO `singlereplace` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'H2', 'FeO', '', 'H2O', 'Fe', ''),
+(2, 'H+', 'F-', '', 'HF', '', ''),
+(3, 'H+', 'MnS', '', 'H2S', 'Mn2+', ''),
+(4, 'OH-', 'NH4+', '', 'H2O', 'NH3', ''),
+(5, 'Ni2+', 'HS-', '', 'NiS', 'H+', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `water`
+--
+
+DROP TABLE IF EXISTS `water`;
+CREATE TABLE IF NOT EXISTS `water` (
+  `Rid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reactant1` varchar(20) DEFAULT NULL,
+  `reactant2` varchar(20) DEFAULT NULL,
+  `reactant3` varchar(20) DEFAULT NULL,
+  `product1` varchar(20) DEFAULT NULL,
+  `product2` varchar(20) DEFAULT NULL,
+  `product3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Rid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `water`
+--
+
+INSERT INTO `water` (`Rid`, `reactant1`, `reactant2`, `reactant3`, `product1`, `product2`, `product3`) VALUES
+(1, 'Li', 'H2O', '', 'Li+', 'HO-', 'H2'),
+(2, 'Na', 'H2O', '', 'Na+', 'HO-', 'H2'),
+(3, 'K', 'H2O', '', 'K+', 'HO-', 'H2'),
+(4, 'CO2', 'H2O', '', 'H2CO3', '', ''),
+(5, 'HCl', 'H2O', '', 'H3O+', 'Cl-', '');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

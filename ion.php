@@ -9,4 +9,4 @@ $ion = array(
         'Rid',
     ),
 );
-include 'mysql.php';
+include 'db_con.php';

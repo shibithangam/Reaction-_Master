@@ -10,4 +10,4 @@ $compounds = array(
         
     ),
 );
-include 'mysql.php';
+include 'db_con.php';

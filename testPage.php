@@ -14,7 +14,7 @@ error_reporting(0);
 	<h1>Test on Combinations Reactions</h1>
 <?php
 
-include 'mysql.php';
+include 'db_con.php';
 
 // fetch total count from combinations table
 $getCnt = reactants_count();

@@ -1067,7 +1067,7 @@ $elements = array(
         'type' => 'solid'
     ),
   );
-include 'mysql.php';
+include 'db_con.php';
 foreach($elements as $data) {
     $data = "INSERT INTO elements ( name, symbol, atomicnumbe, groupnumber, period, atomicweight, type, Rid,)
 	VALUES ( '$data[name]', '$data[symbol]', '$data[atomicnumbe]', '$data[groupnumber]', '$data[period]', '$data[atomicweight]', '$data[type]', null)";

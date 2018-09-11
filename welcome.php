@@ -31,7 +31,7 @@ error_reporting(0);
 </html>
 <?php
 
-include 'mysql.php';
+include 'db_con.php';
 
 if (isset($_POST['submit'])) {
     $res = SignIn();

@@ -13,7 +13,7 @@ error_reporting(0);
 
 <?php
 
-include 'mysql.php';
+include 'db_con.php';
 
 
 //fetch total count from combinations table

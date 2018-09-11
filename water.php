@@ -53,7 +53,7 @@ $water= array(
         'product3' => null,
     ),
 );
-include 'mysql.php';
+include 'db_con.php';
 foreach($water as $data) {
     $wat = "INSERT INTO water (Rid, reactant1, reactant2, reactant3, product1, product2, product3)
 	 VALUES ('$data[Rid]', '$data[reactant1]', '$data[reactant2]', '$data[reactant3]', '$data[product1]', '$data[product2]', '$data[product3]')";

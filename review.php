@@ -13,7 +13,7 @@ error_reporting(0);
 	<h1>Review</h1>
 <?php
 
-include 'mysql.php';
+include 'db_con.php';
 
 $counter = unserialize($_REQUEST["cnt_array"]);
 $query = $_REQUEST["id"];
