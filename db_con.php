@@ -298,7 +298,8 @@ function questions($rID)
     if (! $conn) {
         die("Connection failed: " . mysqli_connect_error());
     } else {
-        $res = mysqli_query($conn, "select reactant1,reactant2,product1 from combination where Rid = '$rID'");
+        //$res = mysqli_query($conn, "select reactant1,reactant2,product1 from combination where Rid = '$rID'");
+        $res = mysqli_query($conn, "select reactant1,reactant2,product1 from reactions where reac_type = 'combination' and Rid = '$rID'");
         if (mysqli_num_rows($res) > 0) {
             return $res;
         } else {
@@ -524,7 +525,7 @@ function oxyRed_count()
         }
     }
 }
-function reactants_count()
+function reactants_count($rType)
 {
     $conn = dbConnection();
     // Check connection
@@ -532,7 +533,8 @@ function reactants_count()
         die("Connection failed: " . mysqli_connect_error());
     } else {
         
-        $res = mysqli_query($conn, "select count(*) as count from combination");
+        //$res = mysqli_query($conn, "select count(*) as count from combination");
+        $res = mysqli_query($conn, "select count(*) as count from reactions where reac_type = '$rType'");
         if (mysqli_num_rows($res) > 0) {
             return $res;
         } else {

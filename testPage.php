@@ -17,7 +17,7 @@ error_reporting(0);
 include 'db_con.php';
 
 // fetch total count from combinations table
-$getCnt = reactants_count();
+$getCnt = reactants_count('combination');
 // $cnt = mysqli_fetch_assoc($getCnt);
 while ($r = mysqli_fetch_assoc($getCnt)) {
     $cnt = $r['count'];

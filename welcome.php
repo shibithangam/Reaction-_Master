@@ -21,7 +21,7 @@ error_reporting(0);
 </tr>
 <tr>
 <td><b>practice</b></td>
-<td><a href="reactionTypes.php">Click Here</a></td>
+<td><a href="combi2.php">Click Here</a></td>
 </tr>
 <tr>
 </table>
