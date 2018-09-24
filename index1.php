@@ -51,7 +51,7 @@
  * and open the template in the editor.
  */
 
-include"db_con1.php";
+include"db_con.php";
 if(isset($_POST['submit'])){
     $username=$_POST['username'];
     $password=$_POST['password'];

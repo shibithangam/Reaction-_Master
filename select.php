@@ -67,7 +67,7 @@ if(isset($_POST['submit1'])){
     header('Location:practice.php');
 }
 if(isset($_POST['submit2'])){
-header('Location:testeq.php');}
+header('Location:testPage.php');}
 if(isset($_POST['submit'])){
     header('Location:tutorial.php');
 }
