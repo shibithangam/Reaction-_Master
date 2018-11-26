@@ -11,8 +11,7 @@ session_start();
 <script type="text/javascript" src="js/script.js"> </script>
 </head>
 <body id="body-color" onload="secondPassed();">
-	<h1>Test on ComplexIon Reactions</h1>
-
+	<h1>Test on Double Replacement Reactions</h1>
 <?php
 
 include 'mysql.php';
@@ -20,12 +19,11 @@ include 'mail.php';
 
 
 //fetch total count from combinations table
-$getCnt = compl_count();
+$getCnt = dou_count();
 #$cnt = mysqli_fetch_assoc($getCnt);
 while ($r = mysqli_fetch_assoc($getCnt)) {
     $cnt = $r['count'];
 }
-
 if (isset($_POST['submit'])) {
     $counter = unserialize($_POST["cnt_array"]);
     $product1_ans = unserialize(base64_decode($_POST["ans_given"]));
@@ -38,7 +36,7 @@ if (isset($_POST['submit'])) {
         }
         array_push($product1_ans, $ans);
     }
-    complexion_review($_SESSION['username'],$_SESSION['examId'],implode(',', $counter),implode(',', $product1_ans),'','');
+    doub_review($_SESSION['username'],$_SESSION['examId'],implode(',', $counter),implode(',', $product1_ans),'','');
     sendEmail($_SESSION['username'], $_SESSION['examId']);
     session_destroy();
     
@@ -48,7 +46,6 @@ if (isset($_POST['submit'])) {
 	        window.location.href = "resultPage.php?id=questions&cnt_array=' . serialize($counter) . '";
     </script>';
 }
-
 if (isset($_POST['next'])) {
     $counter = unserialize($_POST["cnt_array"]);
     $product1_ans = unserialize(base64_decode($_POST["ans_given"]));
@@ -67,17 +64,16 @@ if (isset($_POST['next'])) {
     $counter = array();
     $product1_ans = array();
     $ans_cnt = 0;
-    $examNum = examId($_SESSION['username'], "complexIon");
+    $examNum = examId($_SESSION['username'], "doubleRep");
     while ($row = mysqli_fetch_assoc($examNum)) {
         if ($row['num'] != null) {
-            $_SESSION['examId'] = "complexIon" . ($row['num']+1);
+            $_SESSION['examId'] = "doubleRep_" . ($row['num']+1);
             
         } else {
-            $_SESSION['examId'] = "complexIon_1";
+            $_SESSION['examId'] = "doubleRep_1";
         }
     }
 }
-
 //to genearate random number
 $id = rand(1,$cnt);
 
@@ -89,8 +85,7 @@ while ((in_array($id, $counter)) && (sizeof($counter) < $cnt)){
 array_push($counter, $id);
 
 //fetch question from combination table
-$getData = compl($id);
-
+$getData = dou($id);
 if ($getData != 0) {
     while ($row = mysqli_fetch_assoc($getData)) {
         ?>
@@ -140,3 +135,4 @@ if ($getData != 0) {
         
 </script>
 </html>
+

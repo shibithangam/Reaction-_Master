@@ -1,0 +1,20 @@
+Application Flow
+
+First page ---- home.php , where we can see two options called sign in and sign up
+
+     If we click on Sign In ---- Page is directed to login.php page
+     
+        Here, Existing user can log in to the application by entering username and password
+        
+       when existing credentials are provided, the page is directed to welcome.php page
+       
+       Here, we find two options called Test and Practice and Logout option is also provided which directs to the home.php page
+ 
+ 		Test --- If we select test, it directs to testSelType.php page, where we can see all the nine types of reactions to select.
+ 		
+ 		
+
+	 If we click on Sign Up ----- new user can create an account by providing their required information in the coressponding fields
+	 
+LogOut ----- directs to home.php page
+

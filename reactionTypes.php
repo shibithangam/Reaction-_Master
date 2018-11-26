@@ -20,4 +20,4 @@ $reactionTypes = array(
     ),
     
 );
-include 'db_con.php';
+include 'mysql.php';

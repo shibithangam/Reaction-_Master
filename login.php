@@ -25,7 +25,8 @@ error_reporting(0);
 </body>
 <?php
 
-include 'db_con.php';
+include 'mysql.php';
+
 
 if (isset($_POST['submit'])) {
 	$res = SignIn();

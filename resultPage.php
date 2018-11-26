@@ -12,11 +12,7 @@ error_reporting(0);
 <h4 align="right">
 	<a href="logout.php">Log Out</a>
 </h4>
-	    <form  method="post" action="search.php?go"  id="searchform"> 
-	      <input  type="text" name="name"> 
-	      <input  type="submit" name="submit" value="Search"> 
-	    </form> 
-	    
+	  
 
 <h1>Congratulations</h1>
 <div align="center" style="overflow-x:auto;">

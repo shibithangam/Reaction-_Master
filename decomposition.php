@@ -54,7 +54,7 @@ $decomposition= array(
         'reactant3' => null,
     ),
  );
-include 'db_con.php';
+include 'mysql.php';
 foreach($decomposition as $data) {
     $dec = "INSERT INTO decomposition (Rid, product1, product2, product3, reactant1, reactant2, reactant3)
 	 VALUES ('$data[Rid]', '$data[product1]', '$data[product2]', '$data[product3]', '$data[reactant1]', '$data[reactant2]', '$data[reactant3]')";

@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,23 +8,26 @@ error_reporting(0);
 <meta charset="UTF-8">
 <title>Sign-In</title>
 <link href="css/default.css" rel="stylesheet">
+<script type="text/javascript" src="js/script.js"> </script>
 </head>
-<body id="body-color">
+<body id="body-color" onload="secondPassed();">
 	<h1>Test on Oxydation-Reduction Reactions</h1>
 
 <?php
 
-include 'db_con.php';
-
+include 'mysql.php';
+include 'mail.php';
 
 //fetch total count from combinations table
-$getCnt = oxyRed_count();
+$getCnt = oxiRed_count();
 #$cnt = mysqli_fetch_assoc($getCnt);
 while ($r = mysqli_fetch_assoc($getCnt)) {
     $cnt = $r['count'];
 }
 
 if (isset($_POST['submit'])) {
+    $counter = unserialize($_POST["cnt_array"]);
+    $product1_ans = unserialize(base64_decode($_POST["ans_given"]));
     $ans = $_POST["answer"];
     $ans_cnt = $_POST["ans_cnt"];
     $getData = oxiRed(end($counter));
@@ -31,14 +35,22 @@ if (isset($_POST['submit'])) {
         if($row['product1'] == $ans && $row['product2'] == $ans && $row['product3'] == $ans) {
             $ans_cnt++;
         }
+        array_push($product1_ans, $ans);
     }
+    oxiRed_review($_SESSION['username'],$_SESSION['examId'],implode(',', $counter),implode(',', $product1_ans),'','');
+    sendEmail($_SESSION['username'], $_SESSION['examId']);
+    session_destroy();
+    
     echo '<script type="text/javascript">
-            alert("you have got '.$ans_cnt.' out of '.$cnt.'");
-            window.location.href="resultPage.php";
+	        alert("you have got ' . $ans_cnt . ' out of ' . $cnt . '");
+	        var arr = "<?php echo serialize($counter); ?>";
+	        window.location.href = "resultPage.php?id=questions&cnt_array=' . serialize($counter) . '";
     </script>';
 }
 
 if (isset($_POST['next'])) {
+    $counter = unserialize($_POST["cnt_array"]);
+    $product1_ans = unserialize(base64_decode($_POST["ans_given"]));
     $counter = unserialize($_POST["cnt_array"]);
     $ans = $_POST["answer"];
     $ans_cnt = $_POST["ans_cnt"];
@@ -47,11 +59,22 @@ if (isset($_POST['next'])) {
         if($row['product1'] == $ans && $row['product2'] == $ans && $row['product3'] == $ans) {
             $ans_cnt++;
         }
+        array_push($product1_ans, $ans);
     }
     
 } else {
     $counter = array();
-    $ans_cnt=0;
+    $product1_ans = array();
+    $ans_cnt = 0;
+    $examNum = examId($_SESSION['username'], "oxiRed");
+    while ($row = mysqli_fetch_assoc($examNum)) {
+        if ($row['num'] != null) {
+            $_SESSION['examId'] = "oxiRed_" . ($row['num']+1);
+            
+        } else {
+            $_SESSION['examId'] = "oxiRed_1";
+        }
+    }
 }
 
 //to genearate random number
@@ -73,6 +96,9 @@ if ($getData != 0) {
         
 <p>Question <?php echo sizeof($counter); ?> of <?php echo $cnt?></p>
 	<br>
+	<div class="timer">
+		<time id="cnt"></time>
+	</div>
 	<br>
 	<div align="center">
 		<form method="POST" action="">
@@ -94,6 +120,8 @@ if ($getData != 0) {
 			<?php }?>
 			<input type="hidden" name="cnt_array" value="<?php echo serialize($counter); ?>" />
 			<input type="hidden" name="ans_cnt" value="<?php echo $ans_cnt; ?>" />
+			<input type="hidden" name="ans_given" value="<?php echo base64_encode(serialize($product1_ans)); ?>" />
+			<input type="hidden" name="ans_given" value="<?php echo base64_encode(serialize($product2_ans)); ?>" />
 		</form>
 	</div>
 	        <?php

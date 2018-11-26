@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,13 +8,15 @@ error_reporting(0);
 <meta charset="UTF-8">
 <title>Sign-In</title>
 <link href="css/default.css" rel="stylesheet">
+<script type="text/javascript" src="js/script.js"> </script>
 </head>
-<body id="body-color">
+<body id="body-color" onload="secondPassed();">
 	<h1>Test on Single Replacement Reactions</h1>
 
 <?php
 
-include 'db_con.php';
+include 'mysql.php';
+include 'mail.php';
 
 
 //fetch total count from combinations table
@@ -24,6 +27,8 @@ while ($r = mysqli_fetch_assoc($getCnt)) {
 }
 
 if (isset($_POST['submit'])) {
+    $counter = unserialize($_POST["cnt_array"]);
+    $product1_ans = unserialize(base64_decode($_POST["ans_given"]));
     $ans = $_POST["answer"];
     $ans_cnt = $_POST["ans_cnt"];
     $getData = sinques(end($counter));
@@ -31,14 +36,22 @@ if (isset($_POST['submit'])) {
         if($row['product1'] == $ans && $row['product2'] == $ans) {
             $ans_cnt++;
         }
+        array_push($product1_ans, $ans);
     }
+    singleRep_review($_SESSION['username'],$_SESSION['examId'],implode(',', $counter),implode(',', $product1_ans),'','');
+    sendEmail($_SESSION['username'], $_SESSION['examId']);
+    session_destroy();
+    
     echo '<script type="text/javascript">
-            alert("you have got '.$ans_cnt.' out of '.$cnt.'");
-            window.location.href="resultPage.php";
+	        alert("you have got ' . $ans_cnt . ' out of ' . $cnt . '");
+	        var arr = "<?php echo serialize($counter); ?>";
+	        window.location.href = "resultPage.php?id=questions&cnt_array=' . serialize($counter) . '";
     </script>';
 }
 
 if (isset($_POST['next'])) {
+    $counter = unserialize($_POST["cnt_array"]);
+    $product1_ans = unserialize(base64_decode($_POST["ans_given"]));
     $counter = unserialize($_POST["cnt_array"]);
     $ans = $_POST["answer"];
     $ans_cnt = $_POST["ans_cnt"];
@@ -47,11 +60,22 @@ if (isset($_POST['next'])) {
         if($row['product1'] == $ans && $row['product2'] == $ans) {
             $ans_cnt++;
         }
+        array_push($product1_ans, $row['product1']);
     }
     
 } else {
     $counter = array();
-    $ans_cnt=0;
+    $product1_ans = array();
+    $ans_cnt = 0;
+    $examNum = examId($_SESSION['username'], "singleRep");
+    while ($row = mysqli_fetch_assoc($examNum)) {
+        if ($row['num'] != null) {
+            $_SESSION['examId'] = "singleRep_" . ($row['num']+1);
+            
+        } else {
+            $_SESSION['examId'] = "singleRep_1";
+        }
+    }
 }
 
 //to genearate random number
@@ -73,6 +97,9 @@ if ($getData != 0) {
         
 <p>Question <?php echo sizeof($counter); ?> of <?php echo $cnt?></p>
 	<br>
+	<div class="timer">
+		<time id="cnt"></time>
+	</div>
 	<br>
 	<div align="center">
 		<form method="POST" action="">
@@ -92,6 +119,8 @@ if ($getData != 0) {
 			<?php }?>
 			<input type="hidden" name="cnt_array" value="<?php echo serialize($counter); ?>" />
 			<input type="hidden" name="ans_cnt" value="<?php echo $ans_cnt; ?>" />
+			<input type="hidden" name="ans_given" value="<?php echo base64_encode(serialize($product1_ans)); ?>" />
+			<input type="hidden" name="ans_given" value="<?php echo base64_encode(serialize($product2_ans)); ?>" />
 		</form>
 	</div>
 	        <?php
@@ -105,10 +134,7 @@ if ($getData != 0) {
 	<p style="text-align: left">Instructions : Write your answer in the provided block against question and select 'Next question' button to move to next question in the test.</p>
 </body>
 <script type="text/javascript">
-public function alert()
-{
-    alert('In test Function');
-}
+
         
 </script>
 </html>

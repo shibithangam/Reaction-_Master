@@ -53,7 +53,7 @@ $combination = array(
         'product3' => null
     )
 );
-include 'db_con.php';
+include 'mysql.php';
 foreach ($combination as $data) {
     $query = "INSERT INTO combination (Rid, reactant1, reactant2, reactant3, product1, product2, product3)
 	 VALUES ('$data[Rid]', '$data[reactant1]', '$data[reactant2]', '$data[reactant3]', '$data[product1]', '$data[product2]', '$data[product3]')";

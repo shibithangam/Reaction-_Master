@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+session_start();
 ?>
 <html>
 <head>
@@ -19,7 +20,7 @@ error_reporting(0);
 <br>
 <br>
 <p align="center">
-<a href = "testPage.php" >
+<a href = "combinationTest.php" >
 <font size="5">Combination</font>
 </a>
 </p>
@@ -34,7 +35,7 @@ error_reporting(0);
 </a>
 </p>
 <p align="center">
-<a href = "abcd.php" >
+<a href = "doubleRepTest.php" >
 <font size="5">Double replacement</font>
 </a>
 </p>
